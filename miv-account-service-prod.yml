@@ -1,0 +1,38 @@
+server:
+  port: 8763
+  ssl:
+   enabled: true
+
+spring:
+  boot:
+    admin:
+      client:
+        url: https://sagar-pc:9090
+
+   
+db:
+  url: jdbc:mysql://localhost:3306/miv
+  username: miv_prd_owner
+  password: Welcome123
+  drivername: com.mysql.cj.jdbc.Driver
+        
+eureka:
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: https://sagar-pc:8761/eureka/
+      default-zone: https://sagar-pc:8761/eureka/
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    statusPageUrl: https://sagar-pc:${server.port}/actuator/info
+    healthCheckUrl: https://sagar-pc:${server.port}/actuator/health
+    homePageUrl: https://sagar-pc:${server.port}/ 
+    
+
+logging:
+  file: ${logger.root}/${hostname}-${instance.name}.log
+management:
+  endpoint:
+    logfile:
+      external_file:  ${logger.root}/${hostname}-${instance.name}.log

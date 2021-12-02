@@ -1,0 +1,38 @@
+server:
+  port: 8081
+  ssl:
+   enabled: true
+
+
+eureka:
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: https://sagar-pc:8761/eureka/
+      default-zone: https://sagar-pc:8761/eureka/
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    statusPageUrl: https://sagar-pc:${server.port}/actuator/info
+    healthCheckUrl: https://sagar-pc:${server.port}/actuator/health
+    homePageUrl: https://sagar-pc:${server.port}/   
+
+spring:
+  boot:
+    admin:
+      client:
+        url: https://sagar-pc:9090
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
+      routes:
+        - id: customerModule
+          uri: lb://miv-customer-service
+          predicates:
+            - Path=/api/customer/**
+        - id: accountModule
+          uri: lb://miv-account-service
+          predicates:
+            - Path=/api/account/**

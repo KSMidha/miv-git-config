@@ -1,0 +1,18 @@
+management:
+  endpoint:
+   health:
+    show-details: always
+  endpoints:
+   web:
+    exposure:
+     include: "*"
+
+ 
+miv:
+  auth:
+   token:
+     name: token
+   user:
+     name: loggedin-user
+   url: https://sagar-pc:7777/oauth/
+    
