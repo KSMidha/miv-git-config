@@ -15,8 +15,8 @@ spring:
       client:
         url: https://sagar-pc:9090
   zipkin:
-    base-url: http://localhost:9411/
-    
+    base-url: https://sagar-pc:9411
+
 logging:
   file: ${logger.root}/${hostname}-${instance.name}.log
 management:
