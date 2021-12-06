@@ -14,6 +14,9 @@ spring:
     admin:
       client:
         url: https://sagar-pc:9090
+  zipkin:
+      enabled: true
+      base-url: https://sagar-pc:9411
   cloud:
     gateway:
       httpclient:
